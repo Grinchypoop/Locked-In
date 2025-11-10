@@ -18,6 +18,10 @@ const poolConfig = process.env.DATABASE_URL
 
 const pool = new Pool(poolConfig);
 
+pool.on('error', (error) => {
+  console.error('Database pool error:', error);
+});
+
 export async function initializeDatabase() {
   try {
     const schemaPath = path.join(__dirname, 'schema.sql');
