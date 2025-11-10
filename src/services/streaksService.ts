@@ -34,15 +34,6 @@ async function calculateStreakForMetric(userId: number, metricType: string): Pro
     let lastCompletedDate: string | null = null;
 
     if (metricType === 'non_negotiables') {
-      const result = await pool.query(
-        `SELECT
-          COUNT(*) FILTER (WHERE completed) as completed_count,
-          MAX(date) as last_date
-         FROM non_negotiables_tracking
-         WHERE user_id = $1`,
-        [userId]
-      );
-
       // Calculate streak logic for non-negotiables
       const streakResult = await calculateConsecutiveDays(
         userId,
@@ -75,7 +66,7 @@ async function calculateStreakForMetric(userId: number, metricType: string): Pro
          last_completed_date = $5,
          updated_at = CURRENT_TIMESTAMP
        RETURNING *`,
-      [userId, metricType, currentStreak, bestStreak, lastCompletedDate]
+      [userId, metricType, currentStreak, bestStreak, lastCompletedDate || null]
     );
 
     return result.rows[0];
@@ -88,7 +79,7 @@ async function calculateStreakForMetric(userId: number, metricType: string): Pro
 async function calculateConsecutiveDays(
   userId: number,
   tableName: string,
-  completedColumn?: string
+  completedColumn?: string | null
 ): Promise<{ current: number; best: number; lastDate: string | null }> {
   try {
     let dateColumn = 'date';
