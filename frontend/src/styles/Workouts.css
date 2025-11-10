@@ -1,0 +1,138 @@
+.workouts .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.workouts .stat-card {
+  text-align: center;
+  padding: var(--spacing-md);
+  background: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.workouts .log-form {
+  background: var(--primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-bottom: var(--spacing-lg);
+}
+
+.workouts .log-form h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.workouts .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.workouts .form-row:last-of-type {
+  grid-template-columns: 1fr;
+}
+
+.workouts select.input-field {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.workouts select.input-field option {
+  background: var(--primary);
+  color: var(--text);
+}
+
+.workouts .submit-btn {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.workouts .submit-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.workouts .history {
+  margin-top: var(--spacing-lg);
+}
+
+.workouts .history h3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.workouts .weekly-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.workout-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.workout-info .date {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.workout-info .type {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.workouts .history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  background: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.workouts .history-item .duration {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.workouts .history-item .intensity {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.workouts .history-item .intensity.light {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.workouts .history-item .intensity.moderate {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.workouts .history-item .intensity.intense {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
