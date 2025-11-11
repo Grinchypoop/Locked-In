@@ -83,9 +83,14 @@ export function scheduleCleanupOldCache() {
 // Initialize all cron jobs
 export function initializeCronJobs() {
   console.log('🚀 Initializing cron jobs...');
-  scheduleNonNegotiablesReset();
-  scheduleSyncStreaks();
-  scheduleSyncNotionCalendar();
-  scheduleCleanupOldCache();
-  console.log('✅ All cron jobs initialized');
+  try {
+    scheduleNonNegotiablesReset();
+    scheduleSyncStreaks();
+    scheduleSyncNotionCalendar();
+    scheduleCleanupOldCache();
+    console.log('✅ All cron jobs initialized');
+  } catch (error) {
+    console.error('❌ Error initializing cron jobs:', error);
+    // Don't throw - cron jobs are non-critical
+  }
 }
